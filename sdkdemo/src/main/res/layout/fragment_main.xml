@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/content_main"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" tools:context="com.snapscreen.sdkdemo.MainActivityFragment"
+    tools:showIn="@layout/activity_main">
+
+    <Button android:id="@+id/button_snap" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Snap TV"/>
+
+    <Button android:id="@+id/button_snap_ads" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Snap Advertisements" android:layout_below="@id/button_snap"/>
+
+    <Button android:id="@+id/button_sites" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Websites" android:layout_below="@id/button_snap_ads"/>
+
+    <Button android:id="@+id/button_images" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Images" android:layout_below="@id/button_sites"/>
+
+    <Button android:id="@+id/button_videos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Video" android:layout_below="@id/button_images"/>
+
+</RelativeLayout>
