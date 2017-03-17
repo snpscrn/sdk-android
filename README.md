@@ -99,7 +99,7 @@ Add line that initialize Snapscreen SDK.
 
 ```
 public class SnapApplication extends Application {
-    &#64;Override
+    @Override
     public void onCreate() {
         super.onCreate();
         SnapscreenKit.init(this, {CONSUMER_KEY}, {SECRET}, {connectToTestEnvironment});
@@ -121,10 +121,10 @@ context.startActivityForResult(SnapActivity.getIntentForContext(getContext(), co
 
 ```
 class YourActivity extends Activity {
-    &#64;Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RESULTS_CODE &amp;&amp; resultCode == Activity.RESULT_OK) {
+        if (requestCode == RESULTS_CODE && resultCode == Activity.RESULT_OK) {
             SearchResult searchResult = data.getParcelableExtra("result");
             if (searchResult.getTvSearchResult()) {
                 // Handle TV Search results
@@ -148,10 +148,10 @@ context.startActivityForResult(SnapActivity.getIntentForContext(getContext(), co
 
 ```
 class YourActivity extends Activity {
-    &#64;Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == &lt;requestCode you passed to activity&gt; &amp;&amp; resultCode == Activity.RESULT_OK) {
+        if (requestCode == <requestCode you passed to activity> && resultCode == Activity.RESULT_OK) {
             SearchResult searchResult = data.getParcelableExtra("result");
             if (searchResult.getSportsMatchSearchResult()) {
                 // Handle sports results
@@ -175,10 +175,10 @@ class YourActivity extends Activity {
 
 ```
 class YourActivity extends Activity {
-    &#64;Override
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == &lt;requestCode you passed to activity&gt; &amp;&amp; resultCode == Activity.RESULT_OK) {
+        if (requestCode == <requestCode you passed to activity> && resultCode == Activity.RESULT_OK) {
             SearchResult searchResult = data.getParcelableExtra("result");
             if (searchResult.getAdvertisementSearchResult()) {
                 // Handle advertisement results
@@ -200,23 +200,23 @@ WebSearchService webSearch = SnapscreenKit.getInstance().getWebSearchService();
 After you have acquired the WebSearchService, by calling one of the search methods. SnapscreenKit internally uses Retrofit 2 and exposes RxJava methods that return Observables for making web searches:
 
 ```
-SnapscreenKit.getInstance().getWebSearchService().searchSites("Search term", "locale", "channelCode", SnapscreenKit.getInstance().getCurrentSnapscreenTimestamp(), &lt;page&gt;, &lt;pagesize&gt;)
+SnapscreenKit.getInstance().getWebSearchService().searchSites("Search term", "locale", "channelCode", SnapscreenKit.getInstance().getCurrentSnapscreenTimestamp(), <page>, <pagesize>)
     .subscribeOn(Schedulers.io())
     .observeOn(AndroidSchedulers.mainThread())
     .unsubscribeOn(Schedulers.io())
-    .subscribe(new Subscriber&lt;WebSearchResponse&lt;WebSearchSiteResult&gt;&gt;() {
-        &#064;Override
+    .subscribe(new Subscriber<WebSearchResponse>WebSearchSiteResult>>() {
+        @Override
         public void onCompleted() {
 
         }
 
-        &#064;Override
+        @Override
         public void onError(Throwable e) {
 
         }
 
-        &#064;Override
-        public void onNext(WebSearchResponse&lt;WebSearchSiteResult&gt; response) {
+        @Override
+        public void onNext(WebSearchResponse<WebSearchSiteResult> response) {
             if (response.getWebSearchEntries() != null) {
                 // Do something with results
             } else {
