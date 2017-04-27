@@ -2,7 +2,7 @@
 
 ## Requirements
 
-We assume that you already have an Android project in Android Studio or another Android IDE. The SDK runs on devices with Android 4.0.3, 4.0.4 (API Level 15) or later, but you need to build your app with Android SDK 7.0 (Level 24) or later for the integration with Snapscreen SDK.
+We assume that you already have an Android project in Android Studio or another Android IDE. The SDK runs on devices with Android 4.0.3, 4.0.4 (API Level 15) or later, but you need to build your app with Android SDK 7.1 (Level 25) or later for the integration with Snapscreen SDK.
 
 ## Setup
 
@@ -14,81 +14,46 @@ Snapscreen Team should provide you required client id and client secret.
 
 ### 2. Get the SDK
 
-Add the SDK to your app module's dependencies in Android Studio by adding the following line to your
+Add the jcenter maven repository for the Snapscreen SDK by adding the following entry under repositories in your top-level build.gradle:
 
 ```
-dependencies { ... }
+buildscript {
+    repositories {
+		maven {
+			url "https://dl.bintray.com/snapscreen/snapscreen-sdk"
+		}
+	}
+	// most-like jcenter() and/or mavenCentral()
+}
 ```
 
-configuration:
+Add the SDK to your app module's dependencies in Android Studio by adding the following line to
+your
 
 ```
 compile 'com.snapscreen.mobile:snapscreen-sdk'
 ```
 
-Additionally you need to set your compiler options to Java 8 by adding the following in the android section of your build.gradle
+Note that the Snapscreen SDK also already contains several dependencies to Android Support Libraries
+as well as to Retrofit and RxJava.
 
 ```
-compileOptions {
-	sourceCompatibility JavaVersion.VERSION_1_8
-	targetCompatibility JavaVersion.VERSION_1_8
-}
-```
-
-And you need to enable Jack support by adding the following to defaultConfig section in the android section of your build.gradle:
-
-```
-jackOptions {
-    enabled true
-}
-```
-
-So your build.gradle should at least contain the following parts:
-
-```
-android {
-    defaultConfig {
-        jackOptions {
-            enabled true
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-dependencies {
-    compile 'com.snapscreen.mobile:snapscreen-sdk:1.0.0'
-}
-```
-
-As an alternative you can directly add the .aar file to your project. In this case we recommend you copy the .aar file into a subfolder named libs and modify your build.gradle to look like this:
-
-```
-repositories {
-    flatDir {
-        dirs './libs'
-    }
-}
-
-android {
-    defaultConfig {
-        jackOptions {
-            enabled true
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-dependencies {
-    compile 'com.snapscreen.mobile:snapscreen-sdk:release@aar'
-}
+	compile 'com.android.support:appcompat-v7:25.3.1'
+	compile 'com.android.support:recyclerview-v7:25.3.1'
+	compile 'com.squareup.retrofit2:retrofit:2.1.0'
+	compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+	compile 'io.reactivex:rxjava:1.1.6'
+	compile 'io.reactivex:rxandroid:1.2.1'
+	compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+	compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+	compile "com.snapscreen.matching:snapscreen-matching-client:0.14.0"
+	compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
+	compile 'de.greenrobot:eventbus:2.4.0'
+	compile 'com.android.support:percent:25.3.1'
+	compile 'com.google.guava:guava:18.0'
+	compile 'org.apache.commons:commons-lang3:3.2'
+	compile 'org.apache.commons:commons-collections4:4.0'
+	compile 'commons-io:commons-io:2.4'
 ```
 
 ### 3. Integrate Snapscreen SDK
@@ -102,7 +67,7 @@ public class SnapApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        SnapscreenKit.init(this, {CONSUMER_KEY}, {SECRET}, {connectToTestEnvironment});
+        SnapscreenKit.init(this, {CONSUMER_KEY}, {SECRET}, {connectToTestEnvironment}, {listener});
     }
 }
 ```
