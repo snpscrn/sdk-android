@@ -1,3 +1,8 @@
+## Documentation
+
+For the full API documentation go to https://snpscrn.github.io/sdk-android
+
+
 # Snapscreen SDK Description
 
 ## Requirements
