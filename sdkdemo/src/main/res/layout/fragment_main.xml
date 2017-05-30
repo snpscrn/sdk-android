@@ -12,7 +12,9 @@
 
     <Button android:id="@+id/button_snap_ads" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Snap Advertisements" android:layout_below="@id/button_snap"/>
 
-    <Button android:id="@+id/button_sites" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Websites" android:layout_below="@id/button_snap_ads"/>
+    <Button android:id="@+id/button_snap_sports" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Snap Sport Event" android:layout_below="@id/button_snap_ads"/>
+
+    <Button android:id="@+id/button_sites" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Websites" android:layout_below="@id/button_snap_sports"/>
 
     <Button android:id="@+id/button_images" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Images" android:layout_below="@id/button_sites"/>
 

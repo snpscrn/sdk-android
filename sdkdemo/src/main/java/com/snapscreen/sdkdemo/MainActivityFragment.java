@@ -28,7 +28,7 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
                 SnapConfiguration configuration = new SnapConfiguration();
                 configuration.setSearchForTvResults(true);
-                MainActivityFragment.this.startActivityForResult(SnapActivity.getIntentForContext(MainActivityFragment.this.getContext(), configuration), 123);
+                MainActivityFragment.this.startActivityForResult(SnapActivity.getIntentForContext(MainActivityFragment.this.getContext(), configuration, null), 123);
             }
         });
 
@@ -37,7 +37,16 @@ public class MainActivityFragment extends Fragment {
             public void onClick(View view) {
                 SnapConfiguration configuration = new SnapConfiguration();
                 configuration.setSearchForAdvertisements(true);
-                MainActivityFragment.this.startActivityForResult(SnapActivity.getIntentForContext(MainActivityFragment.this.getContext(), configuration), 123);
+                MainActivityFragment.this.startActivityForResult(SnapActivity.getIntentForContext(MainActivityFragment.this.getContext(), configuration, null), 123);
+            }
+        });
+
+        view.findViewById(R.id.button_snap_sports).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SnapConfiguration configuration = new SnapConfiguration();
+                configuration.setSearchForSportEvents(true);
+                MainActivityFragment.this.startActivityForResult(SnapActivity.getIntentForContext(MainActivityFragment.this.getContext(), configuration, null), 123);
             }
         });
 
