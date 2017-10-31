@@ -22,6 +22,7 @@ Snapscreen Team should provide you required client id and client secret.
 Add the jcenter maven repository for the Snapscreen SDK by adding the following entry under repositories in your top-level build.gradle:
 
 ```
+
 buildscript {
     repositories {
 		maven {
@@ -30,6 +31,7 @@ buildscript {
 	}
 	// most-like jcenter() and/or mavenCentral()
 }
+
 ```
 
 Add the SDK to your app module's dependencies in Android Studio by adding the following line to
@@ -59,6 +61,14 @@ as well as to Retrofit and RxJava.
 	compile 'org.apache.commons:commons-lang3:3.2'
 	compile 'org.apache.commons:commons-collections4:4.0'
 	compile 'commons-io:commons-io:2.4'
+```
+
+If you have incompatibility issues or want to include a newer minor version of one of the dependencies in your own project, you can exclude certain groups by adding the snapscreen sdk dependency the following way (the module appcompat-v7 from the Android Support Library is taken as an example here). You can also exclude a whole group. Please not that if you exclude any of the support libraries and replace them with a newer version in your project, you should do so for all referenced com.android.support dependencies mentioned above and use the same version for all of them!
+
+```
+compile('com.snapscreen.mobile:snapscreen-sdk') {
+	exclude group: 'com.android.support', module: 'appcompat-v7'
+}
 ```
 
 ### 3. Integrate Snapscreen SDK
