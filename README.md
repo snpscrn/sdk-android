@@ -2,6 +2,8 @@
 
 For the full API documentation go to https://snpscrn.github.io/sdk-android
 
+## Support
+In case of any questions or problems please contact us at [support@snapscreen.com](mailto:support@snapscreen.com).
 
 # Snapscreen SDK Description
 
