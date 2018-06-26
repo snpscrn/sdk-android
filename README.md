@@ -143,6 +143,11 @@ class YourActivity extends Activity {
 }
 ```
 
+
+The following sequence diagram shows the flow between your app, the SDK and the Snapscreen backend.
+
+![Sequence Diagram showing flow between app, SDK and Snapscreen backend](doc-resources/sequence_diagram_sports.png "Sequence Diagram showing flow between app, SDK and Snapscreen backend")
+
 ## Snapping Advertisements
 
 ### 1. Start SnapActivity with configuration
