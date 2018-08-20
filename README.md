@@ -122,7 +122,7 @@ class YourActivity extends Activity {
 
 ```
 SnapConfiguration configuration = new SnapConfiguration();
-configuration.setSearchForTvResults(true);
+configuration.setSearchForSportEvents(true);
 context.startActivityForResult(SnapActivity.getIntentForContext(getContext(), configuration), requestCode);
 ```
 
