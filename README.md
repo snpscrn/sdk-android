@@ -47,22 +47,39 @@ Note that the Snapscreen SDK also already contains several dependencies to Andro
 as well as to Retrofit and RxJava.
 
 ```
-	compile 'com.android.support:appcompat-v7:25.3.1'
-	compile 'com.android.support:recyclerview-v7:25.3.1'
-	compile 'com.squareup.retrofit2:retrofit:2.1.0'
-	compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-	compile 'io.reactivex:rxjava:1.1.6'
-	compile 'io.reactivex:rxandroid:1.2.1'
-	compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-	compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-	compile "com.snapscreen.matching:snapscreen-matching-client:0.14.0"
-	compile 'com.squareup.okhttp3:logging-interceptor:3.3.0'
-	compile 'de.greenrobot:eventbus:2.4.0'
-	compile 'com.android.support:percent:25.3.1'
-	compile 'com.google.guava:guava:18.0'
-	compile 'org.apache.commons:commons-lang3:3.2'
-	compile 'org.apache.commons:commons-collections4:4.0'
-	compile 'commons-io:commons-io:2.4'
+	implementation 'com.android.support:appcompat-v7:28.0.0'
+	implementation 'com.android.support:support-media-compat:28.0.0'
+	implementation 'com.android.support:recyclerview-v7:28.0.0'
+	implementation 'com.android.support:design:28.0.0'
+
+	implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+	implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+
+	implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+	implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+	implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+	implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+	implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+
+	implementation 'id.zelory:compressor:2.1.0'
+
+	implementation 'com.squareup.picasso:picasso:2.5.2'
+	implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.2'
+
+	implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+	implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+	implementation 'com.android.support:percent:28.0.0'
+	implementation 'com.android.support:exifinterface:28.0.0'
+
+	implementation 'com.google.android.exoplayer:exoplayer-core:2.9.2'
+	implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.2'
+	implementation 'com.google.android.exoplayer:exoplayer-hls:2.9.2'
+
+	implementation 'com.google.guava:guava:18.0'
+	implementation 'org.apache.commons:commons-lang3:3.2'
+	implementation 'org.apache.commons:commons-collections4:4.0'
+	implementation 'commons-io:commons-io:2.4'
 ```
 
 If you have incompatibility issues or want to include a newer minor version of one of the dependencies in your own project, you can exclude certain groups by adding the snapscreen sdk dependency the following way (the module appcompat-v7 from the Android Support Library is taken as an example here). You can also exclude a whole group. Please not that if you exclude any of the support libraries and replace them with a newer version in your project, you should do so for all referenced com.android.support dependencies mentioned above and use the same version for all of them!
@@ -71,6 +88,15 @@ If you have incompatibility issues or want to include a newer minor version of o
 compile('com.snapscreen.mobile:snapscreen-sdk') {
 	exclude group: 'com.android.support', module: 'appcompat-v7'
 }
+```
+
+Set Java 8 compileOptions in your project-specific build.gradle:
+
+```
+	compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 ```
 
 ### 3. Integrate Snapscreen SDK
@@ -230,6 +256,32 @@ splits {
         reset()
         include 'armeabi-v7a', 'mips', 'x86'
         universalApk true
+    }
+}
+```
+
+## Clip Sharing
+
+### 1. Start ClipSharingActivity with configuration
+
+```
+SnapscreenClipSharingConfiguration configuration = new SnapscreenClipSharingConfiguration();
+Intent intent = new Intent(context, ClipSharingActivity.class);
+intent.putExtra(ClipSharingActivity.CONFIGURATION_EXTRA_KEY, configuration);
+context.startActivityForResult(intent, requestCode);
+```
+
+### 2. Get the result of clip sharing
+
+```
+class YourActivity extends Activity {
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULTS_CODE && resultCode == Activity.RESULT_OK) {
+            SnapscreenClipShareInformation shareInformation = data.getParcelableExtra(ClipSharingActivity.SHAREINFORMATION_RESULT_KEY);
+			// Handle Clip Sharing Result
+        }
     }
 }
 ```

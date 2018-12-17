@@ -20,4 +20,8 @@
 
     <Button android:id="@+id/button_videos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Video" android:layout_below="@id/button_images"/>
 
+    <Button android:id="@+id/button_clipsharing" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Share Clip" android:layout_below="@id/button_videos"/>
+
+    <Button android:id="@+id/button_configuration" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Scan Configuration" android:layout_below="@id/button_clipsharing"/>
+
 </RelativeLayout>

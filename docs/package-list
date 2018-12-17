@@ -1,6 +1,7 @@
 com.snapscreen.sdk
 com.snapscreen.sdk.client.websearch
 com.snapscreen.sdk.model
+com.snapscreen.sdk.model.sharing
 com.snapscreen.sdk.model.snap
 com.snapscreen.sdk.model.sports
 com.snapscreen.sdk.model.websearch

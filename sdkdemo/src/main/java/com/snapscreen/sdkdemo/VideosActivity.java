@@ -8,9 +8,10 @@ import com.snapscreen.sdk.SnapscreenKit;
 import com.snapscreen.sdk.model.websearch.WebSearchResponse;
 import com.snapscreen.sdk.model.websearch.WebSearchVideoResult;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by martin on 27/10/2016.
@@ -29,26 +30,15 @@ public class VideosActivity extends AppCompatActivity {
         this.adapter = new WebSearchAdapter(this);
         listView.setAdapter(this.adapter);
 
-        SnapscreenKit.getInstance().getWebSearchService().searchVideos("Big Bang Theory", "at_DE", "at-orf1", SnapscreenKit.getInstance().getCurrentSnapscreenTimestamp(), 0, 25)
+        Disposable disposable = SnapscreenKit.getInstance().getWebSearchService().searchVideos("Big Bang Theory", "at_DE", "at-orf1", SnapscreenKit.getInstance().getCurrentSnapscreenTimestamp(), 0, 25)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<WebSearchResponse<WebSearchVideoResult>>() {
+                .subscribe(new Consumer<WebSearchResponse<WebSearchVideoResult>>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(WebSearchResponse<WebSearchVideoResult> webSearchVideoResultWebSearchResponse) {
+                    public void accept(WebSearchResponse<WebSearchVideoResult> webSearchVideoResultWebSearchResponse) throws Exception {
                         if (webSearchVideoResultWebSearchResponse.getWebSearchEntries() != null) {
                             adapter.updateResults(webSearchVideoResultWebSearchResponse.getWebSearchEntries());
-                        } else {
                         }
                     }
                 });

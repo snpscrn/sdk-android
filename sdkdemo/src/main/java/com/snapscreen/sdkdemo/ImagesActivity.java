@@ -8,9 +8,10 @@ import com.snapscreen.sdk.SnapscreenKit;
 import com.snapscreen.sdk.model.websearch.WebSearchImageResult;
 import com.snapscreen.sdk.model.websearch.WebSearchResponse;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by martin on 27/10/2016.
@@ -29,25 +30,15 @@ public class ImagesActivity extends AppCompatActivity {
         this.adapter = new WebSearchAdapter(this);
         listView.setAdapter(this.adapter);
 
-        SnapscreenKit.getInstance().getWebSearchService().searchImages("Big Bang Theory", "at_DE", "at-orf1", SnapscreenKit.getInstance().getCurrentSnapscreenTimestamp(), 0, 25)
+        Disposable disposable = SnapscreenKit.getInstance().getWebSearchService().searchImages("Big Bang Theory", "at_DE", "at-orf1", SnapscreenKit.getInstance().getCurrentSnapscreenTimestamp(), 0, 25)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .unsubscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<WebSearchResponse<WebSearchImageResult>>() {
+                .subscribe(new Consumer<WebSearchResponse<WebSearchImageResult>>() {
                     @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onNext(WebSearchResponse<WebSearchImageResult> webSearchImageResultWebSearchResponse) {
+                    public void accept(WebSearchResponse<WebSearchImageResult> webSearchImageResultWebSearchResponse) throws Exception {
                         if (webSearchImageResultWebSearchResponse.getWebSearchEntries() != null) {
                             adapter.updateResults(webSearchImageResultWebSearchResponse.getWebSearchEntries());
-                        } else {
                         }
                     }
                 });
