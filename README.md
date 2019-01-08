@@ -285,3 +285,12 @@ class YourActivity extends Activity {
     }
 }
 ```
+
+The tutorial is shown the first time the users opens clip sharing. After that first time, the shared preferences for service "sharing_tutorial" store a boolean value of true for the key "key_sharing_tutorial_seen". If you want to force showing/hiding the tutorial, you can set this preference value the following way:
+
+```
+SharedPreferences prefs = context.getSharedPreferences("sharing_tutorial", Context.MODE_PRIVATE);
+SharedPreferences.Editor editor = prefs.edit();
+editor.putBoolean("key_sharing_tutorial_seen", true).apply();
+
+```
