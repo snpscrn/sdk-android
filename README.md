@@ -11,6 +11,8 @@ In case of any questions or problems please contact us at [support@snapscreen.co
 
 We assume that you already have an Android project in Android Studio or another Android IDE. The SDK runs on devices with Android 4.0.3, 4.0.4 (API Level 15) or later, but you need to build your app with Android SDK 7.1 (Level 25) or later for the integration with Snapscreen SDK.
 
+Additionally, Snapscreen requires the Android NDK (Native Development Kit). Please make sure to install the NDK of your Android SDK and include the following path in your local.properties file in your project:
+
 ## Setup
 
 We recommend integration of our compiled library into your project using Android Studio and Gradle.
