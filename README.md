@@ -303,6 +303,7 @@ We recommend the following minimum heights for the images that can be provided. 
 
 * tutorialLogoImage: no recommendation
 * largeSponsorImage: 150px
+* largeTutorialSponsorImage: 150px
 * smallSponsorImage: 50px
 * tutorialBackgroundImage: iPhone height
 * sharingIntroductionHintImage: 50px
