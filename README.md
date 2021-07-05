@@ -28,9 +28,6 @@ The SDK is published via Github Packages. To integrate a Github Package dependen
 See https://proandroiddev.com/publishing-android-libraries-to-the-github-package-registry-part-1-7997be54ea5a for more details is in **Part 2 — Using an Android library from GitHub Packages within an Android Application**.
 
 
-https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Using%20Kotlin%20DSL%20to%20publish%20an%20Android%20library%20to%20GitHub%20Packages
-
-
 Add the SDK to your app module's dependencies in Android Studio by adding the following line to
 your
 
