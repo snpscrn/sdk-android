@@ -23,20 +23,13 @@ Snapscreen Team should provide you required client id and client secret.
 
 ### 2. Get the SDK
 
-Add the jcenter maven repository for the Snapscreen SDK by adding the following entry under repositories in your top-level build.gradle:
+The SDK is published via Github Packages. To integrate a Github Package dependency you need to create a Personal Access Token on Github and create github.properties file in your project.
 
-```
+See https://proandroiddev.com/publishing-android-libraries-to-the-github-package-registry-part-1-7997be54ea5a for more details is in **Part 2 — Using an Android library from GitHub Packages within an Android Application**.
 
-buildscript {
-    repositories {
-		maven {
-			url "https://dl.bintray.com/snapscreen/snapscreen-sdk"
-		}
-	}
-	// most-like jcenter() and/or mavenCentral()
-}
 
-```
+https://www.droidcon.com/news-detail?content-id=/repository/collaboration/Groups/spaces/droidcon_hq/Documents/public/news/android-news/Using%20Kotlin%20DSL%20to%20publish%20an%20Android%20library%20to%20GitHub%20Packages
+
 
 Add the SDK to your app module's dependencies in Android Studio by adding the following line to
 your
