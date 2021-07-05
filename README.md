@@ -25,7 +25,7 @@ Snapscreen Team should provide you required client id and client secret.
 
 The SDK is published via Github Packages. To integrate a Github Package dependency you need to create a Personal Access Token on Github and create github.properties file in your project.
 
-See https://proandroiddev.com/publishing-android-libraries-to-the-github-package-registry-part-1-7997be54ea5a for more details is in **Part 2 — Using an Android library from GitHub Packages within an Android Application**.
+See https://proandroiddev.com/publishing-android-libraries-to-the-github-package-registry-part-1-7997be54ea5a for more details. The relevant section starts at **Part 2 — Using an Android library from GitHub Packages within an Android Application**.
 
 
 Add the SDK to your app module's dependencies in Android Studio by adding the following line to
