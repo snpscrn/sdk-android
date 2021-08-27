@@ -300,3 +300,9 @@ We recommend the following minimum heights for the images that can be provided. 
 * tutorialContent Images: at least 400px
 
 In addition to providing the images as resource ids from your application packge, you can also pass the images via Uri, which gives you more flexibility for example in setting custom images that you download at runtime. *Please note* that if you set images via Uri Android cannot automatically scale the images depending on the device scale (hdpi...xxxhdpi) and you should also use the appropriate setters to set maximum heights for the provided images.
+
+### Modifying Localizations
+
+In order to modify any text used within SnapscreenKit, simply redefine the appropriate strings in strings.xml files in your project. Please note that SnapscreenKit provides localizations for German (values-de), English (values-en) and Russian (value-rRU).
+
+See values.xml by inspecting the res-folder in com.snapscreen.mobile:snapscreen-sdk library via Android-Studio -> Project -> External Libraries.
