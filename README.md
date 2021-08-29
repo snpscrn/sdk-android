@@ -306,3 +306,7 @@ In addition to providing the images as resource ids from your application packge
 In order to modify any text used within SnapscreenKit, simply redefine the appropriate strings in strings.xml files in your project. Please note that SnapscreenKit provides localizations for German (values-de), English (values-en) and Russian (value-rRU).
 
 See values.xml by inspecting the res-folder in com.snapscreen.mobile:snapscreen-sdk library via Android-Studio -> Project -> External Libraries.
+
+### Customizing Snap Logo
+
+In order to customize the logo display in the Snap UI, use **setUseCustomSnapLogo** and **setCustomSnapLogoResourceId** in the **SnapConfiguration** accordingly.
